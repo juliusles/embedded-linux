@@ -16,6 +16,7 @@ void *PrintHello(void *threadid)
 {
     int i;
     double myresult=0.0;
+    // Type cast void* --> long
     printf("thread=%ld: starting...\n", (long)threadid);
     for (i=0; i<1000000; i++)
        myresult += sin(i) * tan(i);
@@ -38,7 +39,19 @@ int main(int argc, char *argv[])
             exit(-1);
         }
     }
-    // TODO: join threads
-    sleep(2);
+    /* Bugi: threadit eivät ehdi suoriutua tehtävästä koska main-funktiossa ei
+       odoteta niiden valmistumista. Korjattu pthread_join funktiolla.
+       Alempana kommentoitu rivi sleep(2) toimii myös, tänä aikana threadit
+       ehtivät suorittaa tehtävän loppuun.                                     */
+
+    for(t=0;t<NUM_THREADS;t++)
+    {
+        rc = pthread_join(threads[t], NULL);
+        if (rc)
+        {
+            printf("Error joining thread\n");
+        }
+    }
+    //sleep(2);
     printf("Main: Done on not!.\n");
 }
