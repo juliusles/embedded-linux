@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
             exit(-1);
         }
     }
+    // TODO: join threads
     sleep(2);
     printf("Main: Done on not!.\n");
 }
