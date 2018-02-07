@@ -1,0 +1,62 @@
+//Read the NOTES section in the wait manual page (man 2 wait) to get a clear
+//idea about zombie processes. And tell me why zombie is not welcomed.
+
+//Compile and run this small program. This program can leave a zombie process
+//in the system. You can see it on shell with ps u or ps ax command.
+
+
+
+/* zombie test. */
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  pid_t pid;
+  pid_t pid2;
+  switch(pid = fork())
+    {
+    case -1:
+      perror("fork failed");
+      exit(1);
+    case 0:
+      printf(" CHILD: My PID is %d, My parent's PID is %d\n", getpid(), getppid());
+      pid2 = fork();
+      if(pid2 == 0)
+        exit(0);
+      else
+     
+      exit(0);
+    default:
+      printf("PARENT: My PID is %d, My child's PID is %d\n", getpid(), pid);
+      printf("PARENT: I'm now looping...\n");
+      while(1);
+    }
+  exit(0);
+}
+
+/*
+Your task:
+
+Write a similar program that leaves 5 zombies.
+
+
+
+
+Tell me the difference between exit() and return and what is differences between zombie and orphan child process?
+Learn how to avoid zombies with waitpid() system call. FYI! Consult google!!!
+
+And correct the above program.
+
+Sum up: Please answer the following questions.
+
+    How many hours you spent in this section?
+    What's the major problems you met in this section? And,
+    How did you solve (or try solving) them?
+    Have you learnt anything? Or your time was just wasted?
+
+And,please, attach your solved c-file as tar-ball.
+
+*/

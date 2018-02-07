@@ -1,0 +1,4 @@
+Compile and run thread_demo2.c program. 
+Now, remove the pthread_join call, i.e. comment out line 29-32. 
+Compile and run it again for multiple times. 
+Tell me the difference, and why? 

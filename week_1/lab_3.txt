@@ -1,0 +1,7 @@
+/* First write a program, which prints Hello - once by parent process and 
+bye - twice time, once by the parent and once by the child*/
+
+/* Second consider the fork() function for creating new processes. Using your Linux
+virtual machine (shell), what system call is actually used when you invoke the
+fork() function? (Use the strace command for tracing system calls.)*
+
